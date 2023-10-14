@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\conta\OneDrive\Documentos Local\PythonProjects\teste_streamlit_gsheets\venv"
+VIRTUAL_ENV="C:\Users\conta\OneDrive\Documentos\GitHub\Teste-Sheets\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
