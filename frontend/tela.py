@@ -14,7 +14,7 @@ def validate_email(email):
 
 def validate_phone_number(phone_number):
     # Expressão regular para validar números de celular
-    pattern = r'^\+[1-9]\d{1,14}$'
+    pattern = r'^\([1-9]{2}\) (?:[2-8]|9[0-9])[0-9]{3}\-[0-9]{4}$'
     if re.match(pattern, phone_number):
         return True
     else:
