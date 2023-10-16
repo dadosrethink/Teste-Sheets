@@ -10,11 +10,7 @@ class Api():
         )
 
     def desempacotar(self, lead: Lead) -> list:
-        nova_linha = [
-            lead.nome, lead.sobrenome, 
-            lead.cargo, lead.email, 
-            lead.empresa, lead.telefone
-            ]
+        nova_linha = list(lead.__dict__.values())
         return nova_linha
     
     def registrar(self, lead: Lead) -> dict:
