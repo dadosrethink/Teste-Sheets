@@ -62,8 +62,8 @@ class Sheets:
         print(dado)
         numero_da_linha = len(self.values)+1
         self.result = self.sheet.values().update(
-            spreadsheetId=self.SPREADSHEET_ID,
-            range=f'leads!A{numero_da_linha}',
+            spreadsheetId=self.planilha_id,
+            range=f'{self.guia}!{self.intervalo[0]}{numero_da_linha}',
             valueInputOption="USER_ENTERED",
             body={"values":dado}
         ).execute()
