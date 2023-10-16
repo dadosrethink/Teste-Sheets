@@ -12,6 +12,15 @@ def validate_email(email):
         return False
 
 
+def validate_phone_number(phone_number):
+    # Expressão regular para validar números de celular
+    pattern = r'^\+[1-9]\d{1,14}$'
+    if re.match(pattern, phone_number):
+        return True
+    else:
+        return False
+
+
 class Tela():
     
     
@@ -35,17 +44,20 @@ class Tela():
         
         if st.button("Registrar"):
             
-            if validate_email(email=email_):           
-                lead.nome = nome_
-                lead.sobrenome = None
-                lead.cargo = cargo_
-                lead.email = email_
-                lead.empresa = empresa_
-                lead.telefone = telefone_
-                
-                Api().registrar(lead=lead)
-                
-                st.success("OK")
+            if validate_email(email=email_):
+                if validate_phone_number(telefone_):           
+                    lead.nome = nome_
+                    lead.sobrenome = None
+                    lead.cargo = cargo_
+                    lead.email = email_
+                    lead.empresa = empresa_
+                    lead.telefone = telefone_
+                    
+                    Api().registrar(lead=lead)
+                    
+                    st.success("OK")
+                else:
+                    st.warning('Telefone Inválido')
             else:
                 st.warning('E-mail inválido tente novamente!')
         
