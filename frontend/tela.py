@@ -5,7 +5,7 @@ import re
 
 def validate_email(email):
     # Expressão regular para validar um endereço de email
-    pattern = r'^[\w\.-]+@[\w\.-]+$'
+    pattern = r'^[\w\.-]+@[\w\.-]+.[\w\.-]$'
     if re.match(pattern, email):
         return True
     else:
