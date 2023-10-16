@@ -15,17 +15,17 @@ class Tela():
         
         with col1:
             nome_ = st.text_input("Nome")
-            cargo_ = st.text_input("Cargo")
+            cargo_ = st.selectbox(label='Posição',
+                                  options=['Diretor','Head','Supervisor','Gerente','Analista','Estagiário'])
             empresa_ = st.text_input("Empresa")
             
         with col2:
-            sobrenome_ = st.text_input("Sobrenome")
             email_ = st.text_input("E-mail")
             telefone_ = st.text_input("Telefone")    
         
         if st.button("Registrar"):
             lead.nome = nome_
-            lead.sobrenome = sobrenome_
+            lead.sobrenome = None
             lead.cargo = cargo_
             lead.email = email_
             lead.empresa = empresa_
