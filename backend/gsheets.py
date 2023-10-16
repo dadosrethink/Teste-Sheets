@@ -6,7 +6,7 @@ from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+# from googleapiclient.errors import HttpError
 
 
 class Sheets:
@@ -14,12 +14,22 @@ class Sheets:
     # If modifying these scopes, delete the file token.json.
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
-    # The ID and range of a sample spreadsheet.
-    SPREADSHEET_ID = '1rKIjFna5fHVpXyJ8i6J6CnYSnpFEYjExmrGnfw7hdZs'
-    RANGE_NAME = 'leads!A:Z'
+    # # The ID and range of a sample spreadsheet.
+    # SPREADSHEET_ID = '1rKIjFna5fHVpXyJ8i6J6CnYSnpFEYjExmrGnfw7hdZs'
+    # RANGE_NAME = 'leads!A:Z'
     
     
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        planilha_id: str,
+        guia: str = 'Página1',
+        intervalo: str = 'A:Z'
+        ) -> None:
+        
+        self.planilha_id = planilha_id
+        self.guia = guia
+        self.intervalo = intervalo
+        self.range = f"{self.guia}!{self.intervalo}"
         
         self.creds = None
         # The file token.json stores the user's access and refresh tokens, and is
@@ -43,8 +53,8 @@ class Sheets:
 
         # Call the Sheets API
         self.sheet = self.service.spreadsheets()
-        self.result = self.sheet.values().get(spreadsheetId=self.SPREADSHEET_ID,
-                                    range=self.RANGE_NAME).execute()
+        self.result = self.sheet.values().get(spreadsheetId=self.planilha_id,
+                                    range=self.range).execute()
         self.values = self.result.get('values', [])
             
     
@@ -58,7 +68,20 @@ class Sheets:
             body={"values":dado}
         ).execute()
         
+        
+    def pegar_tudo(self):
+        ...
+        
+    def pegar_linha(self, id: int):
+        ...
+        
+    def excluir_linha(self, id: int):
+        ...
+        
+    def excluir_tudo(self):
+        ...
 
+        
 
 if __name__ == '__main__':
     Sheets()

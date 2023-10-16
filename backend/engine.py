@@ -4,7 +4,10 @@ from .gsheets import Sheets
 class Api():
     
     def __init__(self) -> None:
-        pass
+        self.planilha = Sheets(
+            planilha_id='1rKIjFna5fHVpXyJ8i6J6CnYSnpFEYjExmrGnfw7hdZs',
+            guia='leads'
+        )
 
     def desempacotar(self, lead: Lead) -> list:
         nova_linha = [
@@ -23,11 +26,11 @@ class Api():
         return status
         
     def pegar_id(self) -> str:
-        id = str(len(Sheets().values))
+        id = str(len(self.planilha.values))
         return id
     
     def inserir(self, dados: list) -> dict:
-        status = Sheets().inserir_dado(dados)
+        status = self.planilha.inserir_dado(dados)
         return status
     
     

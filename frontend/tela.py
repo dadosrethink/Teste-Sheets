@@ -32,5 +32,7 @@ class Tela():
             lead.telefone = telefone_
             
             Api().registrar(lead=lead)
+            
+            st.success("OK")
         
         
