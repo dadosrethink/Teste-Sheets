@@ -1,5 +1,15 @@
 import streamlit as st
 from backend import *
+import re
+
+
+def validate_email(email):
+    # Expressão regular para validar um endereço de email
+    pattern = r'^[\w\.-]+@[\w\.-]+$'
+    if re.match(pattern, email):
+        return True
+    else:
+        return False
 
 
 class Tela():
@@ -24,15 +34,19 @@ class Tela():
             telefone_ = st.text_input("Telefone")    
         
         if st.button("Registrar"):
-            lead.nome = nome_
-            lead.sobrenome = None
-            lead.cargo = cargo_
-            lead.email = email_
-            lead.empresa = empresa_
-            lead.telefone = telefone_
             
-            Api().registrar(lead=lead)
-            
-            st.success("OK")
+            if validate_email(email=email_):           
+                lead.nome = nome_
+                lead.sobrenome = None
+                lead.cargo = cargo_
+                lead.email = email_
+                lead.empresa = empresa_
+                lead.telefone = telefone_
+                
+                Api().registrar(lead=lead)
+                
+                st.success("OK")
+            else:
+                st.warning('E-mail inválido tente novamente!')
         
         
