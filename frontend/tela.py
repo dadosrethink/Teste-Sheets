@@ -17,6 +17,8 @@ class Tela():
     
     def __init__(self) -> None:
         
+        st.image('frontend/Cover_02.png')
+        
         st.title('Crie OKRs com IA')        
         
         st.divider()
@@ -66,9 +68,9 @@ class Tela():
                             solicitacao= solicitacao_,
                             resposta= 'Teste'
                         )
-                        
-                        Api().registrar(lead=lead)
-                        st.success("Seu OKR aqui...")
+                        with st.spinner("Gerando OKR..."):
+                            Api().registrar(lead=lead)
+                            st.success("Seu OKR aqui...")
                 else:
                     st.warning('Alguns dados estão inválidos, tente novamente!')
             else:
