@@ -31,7 +31,7 @@ class Tela():
     
     def __init__(self) -> None:
         
-        st.image('frontend/Cover_02.png')
+        st.image('frontend/image.png')
         
         st.title('Crie OKRs com IA')        
         
@@ -86,13 +86,14 @@ class Tela():
                             Api().registrar(lead=lead)
                             st.success("Seu OKR aqui...")
                             st.divider()
-                            
-                            
-                            endereco = "https://api.whatsapp.com/send/?phone=5531971026537&text&type=phone_number&app_absent=0"
-                            link_botao(link=endereco, label='Fale Conosco!')
                 else:
                     st.warning('Alguns dados estão inválidos, tente novamente!')
             else:
                 st.warning('E-mail inválido tente novamente!')
         
+        with st.container():
+            st.divider()
+            st.markdown("### Quer se aprofundar? Nos contate através do link a baixo!")
+            endereco = "https://api.whatsapp.com/send/?phone=5531971026537&text&type=phone_number&app_absent=0"
+            link_botao(link=endereco, label='Fale Conosco!')
         
